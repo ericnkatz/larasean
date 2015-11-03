@@ -30,8 +30,6 @@ Route::get('posts/{id}/{slug}', function($id, $slug) {
 
 	if($post && $post->slug === $slug) {
 		return $post;
-	} else {
-		redirect()
 	}
 
 });
