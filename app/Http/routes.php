@@ -11,8 +11,28 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('about', 'PagesController@about');
+
+
+Route::get('posts/create', 'PostsController@create');
+
+Route::post('posts/create', 'PostsController@store');
+
+Route::get('posts/{id}/{slug}', function($id, $slug) {
+	
+	$post = App\Post::find($id);
+
+	if($post && $post->slug === $slug) {
+		return $post;
+	} else {
+		redirect()
+	}
+
+});
+
