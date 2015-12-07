@@ -12,6 +12,13 @@
 */
 
 
+Route::get('demo', function(){
+	$client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => 'MEETUP_API_KEY'));
+
+	$members = $client->getMembers(['group_urlname' => 'Columbus-Web-Group']);
+
+	dd($members);
+});
 
 Route::get('/', function () {
     return view('welcome');
